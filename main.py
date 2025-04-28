@@ -15,6 +15,7 @@ from pygame.locals import *  # För att läsa knapptryckningar och sånt
 import random  # För att skapa random tal (t.ex. för att slumpla fram matens plats)
 import os  # För att jobba med filer och sånt
 import requests  # För att göra HTTP-anrop (men vi använder det inte än)
+import stat # för permission change KOMMER IT ANVÄNDA
 
 # Constants
 WIDTH, HEIGHT = 600, 480  # storleken på fönstret
@@ -178,8 +179,7 @@ class Game:
     def load_posnia_background(self):
         # URL för att ladda ner Posnia bakgrund
         image_url = "https://media.discordapp.net/attachments/1365774256859775068/1366396291675984027/Screenshot_20250428_145053_Gallery.jpg?ex=6810cb36&is=680f79b6&hm=2ca66fddd3f2d0a3b64617f72aad16bb1cd0dac129ca930b0999dfc3ed51aebb&=&format=webp&width=2086&height=1174"
-        filename = "posnia.jpg"
-
+        filename = "./posnia.jpg"
         try:
             # Försök ladda bakgrunden från fil först
             background = pygame.image.load(filename)
@@ -414,7 +414,7 @@ class Game:
             self.settings['posnia_enabled'] = self.posnia_enabled
             self.save_settings()  # spara inställningar
             if self.posnia_enabled:
-                pygame.mixer.music.load("posnia_music.mp3") # spela musik om posnia aktiverat
+                pygame.mixer.music.load("./posnia_music.mp3") # spela musik om posnia aktiverat
                 pygame.mixer.music.play(-1)
             else:
                 pygame.mixer.music.stop() # stoppa musik om posnia mode inte är på
