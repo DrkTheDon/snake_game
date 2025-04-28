@@ -413,6 +413,11 @@ class Game:
             self.posnia_enabled = not self.posnia_enabled
             self.settings['posnia_enabled'] = self.posnia_enabled
             self.save_settings()  # spara inställningar
+            if self.posnia_enabled:
+                pygame.mixer.music.load("posnia_music.mp3") # spela musik om posnia aktiverat
+                pygame.mixer.music.play(-1)
+            else:
+                pygame.mixer.music.stop() # stoppa musik om posnia mode inte är på
         elif code == "wasd":
             self.display_message("Code Valid: WASD controls toggled!")  # WASD kontroll aktiverad/avaktiverad
             self.wasd_controls = not self.wasd_controls
