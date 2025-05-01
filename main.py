@@ -408,6 +408,19 @@ class Game:
                     self.display_message("Invalid length. Must be between 1 and 20.")  # ogiltig längd
             except ValueError:
                 self.display_message("Invalid input. Please enter a number.")  # om användaren skriver något annat än ett nummer
+        elif code == "irenebypass":
+            self.display_message("Code Valid: Customize snake length (BYPASS)")  # giltig kod för att anpassa längd (bypassed version)
+            length_str = self.get_user_input("Enter desired snake length:")  # ber om längd från användaren
+            try:
+                length = int(length_str)
+                if 1 <= length <= 99:
+                    self.settings['start_length'] = length
+                    self.save_settings()
+                    self.display_message(f"Snake length set to {length}")  # visar resultatet
+                else:
+                    self.display_message("Invalid length. Must be between 1 and 99.")  # ogiltig längd
+            except ValueError:
+                self.display_message("Invalid input. Please enter a number.")  # om användaren skriver något annat än ett nummer
         elif code == "posnia":
             self.display_message("Code Valid: Posnia mode toggled!")  # Posnia-läge aktiverat eller avaktiverat
             self.posnia_enabled = not self.posnia_enabled
